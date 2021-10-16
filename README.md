@@ -10,3 +10,6 @@
 
 3. 视频通话采用WebRTC技术，使用的是即构的**Express-Video SDK**进行搭建，教程详见<https://doc-zh.zego.im/article/5416>
 
+## 友情提醒
+
+[此仓库](https://github.com/zys91/SmartDoor_Client)为智能门禁移动客户端(用户侧)，需与门禁设备终端配合食用，终端侧仓库[传送门](https://github.com/zys91/SmartDoor_Terminal)
