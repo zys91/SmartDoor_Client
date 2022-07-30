@@ -1,0 +1,67 @@
+plugins {
+    id 'com.android.application'
+    id 'com.mob.sdk'
+}
+
+// 在MobSDK的扩展中注册SMS SDK的相关信息
+MobSDK {
+    appKey "请在此次填写你所申请到的appKey"
+    appSecret "请在此次填写你所申请到的appSecret"
+    permissions {
+        exclude "android.permission.READ_CONTACTS", "android.permission.READ_PHONE_STATE"
+    }
+    SMSSDK {}
+}
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.hhuc.smartdoor"
+        minSdkVersion 24
+        targetSdkVersion 28
+        versionCode 30
+        versionName "2.6.0"
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86'
+        }
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    implementation fileTree(dir: 'src/main/libs', include: ['*.jar', '*.aar'])
+    implementation 'com.acker:simplezxing:1.5'
+    implementation 'org.jetbrains:annotations-java5:15.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.navigation:navigation-fragment:2.3.2'
+    implementation 'androidx.navigation:navigation-ui:2.3.2'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'jp.wasabeef:glide-transformations:3.0.1'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+}
